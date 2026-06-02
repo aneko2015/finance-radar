@@ -1,0 +1,5 @@
+# 個人財務資料 - 不要上傳到 GitHub
+csv/
+*.pdf
+*.csv
+*.json

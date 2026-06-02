@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal Finance Radar Lite - 輕量個人財務總覽工具"
+    />
+    <title>Finance Radar Lite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar" aria-label="主要導覽">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+              <circle cx="10" cy="10" r="3.5" fill="white"/>
+              <line x1="10" y1="3" x2="10" y2="1" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="17" y1="10" x2="19" y2="10" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="10" y1="17" x2="10" y2="19" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="3" y1="10" x2="1" y2="10" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="brand-title">Finance Radar</p>
+            <p class="brand-subtitle">Lite Dashboard</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="#overview" class="nav-link active">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="1" y="9" width="4" height="8" rx="1"/>
+              <rect x="7" y="5" width="4" height="12" rx="1"/>
+              <rect x="13" y="1" width="4" height="16" rx="1"/>
+            </svg>
+            總覽
+          </a>
+          <a href="#fixed" class="nav-link">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="14" height="12" rx="2"/>
+              <line x1="2" y1="7" x2="16" y2="7"/>
+              <line x1="6" y1="1" x2="6" y2="5"/>
+              <line x1="12" y1="1" x2="12" y2="5"/>
+              <line x1="5" y1="11" x2="13" y2="11"/>
+            </svg>
+            固定
+          </a>
+          <a href="#income" class="nav-link">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2,13 6,8 10,10 16,4"/>
+              <polyline points="12,4 16,4 16,8"/>
+            </svg>
+            收入
+          </a>
+          <a href="#cashflow" class="nav-link">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 6h14M12 2l4 4-4 4"/>
+              <path d="M16 12H2M6 8l-4 4 4 4"/>
+            </svg>
+            現金流
+          </a>
+          <a href="#spending" class="nav-link">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="1" y="4" width="16" height="11" rx="2"/>
+              <line x1="1" y1="8" x2="17" y2="8"/>
+              <line x1="5" y1="12" x2="7" y2="12"/>
+            </svg>
+            支出
+          </a>
+          <a href="#assets" class="nav-link">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="1" y1="17" x2="17" y2="17"/>
+              <rect x="3" y="10" width="3" height="7"/>
+              <rect x="7.5" y="6" width="3" height="11"/>
+              <rect x="12" y="2" width="3" height="15"/>
+            </svg>
+            資產
+          </a>
+          <a href="#mortgage" class="nav-link">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M1 8L9 1l8 7"/>
+              <path d="M3 7v9h5v-5h2v5h5V7"/>
+            </svg>
+            房貸
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">Finance Radar Lite · 2026</div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">個人財務雷達</p>
+            <h1>每個月的錢流、資產與預算</h1>
+          </div>
+          <div class="toolbar">
+            <label class="select-label">
+              月份
+              <select id="monthSelect"></select>
+            </label>
+            <button id="exportBtn" class="icon-button" type="button">匯出</button>
+            <button id="importBtn" class="icon-button secondary" type="button">匯入</button>
+            <input id="importFile" type="file" accept="application/json,.json" hidden />
+          </div>
+        </header>
+
+        <section id="overview" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Overview</p>
+              <h2>本月狀態</h2>
+            </div>
+            <button id="resetBtn" class="text-button" type="button">重置示範資料</button>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span>收入</span>
+              <strong id="metricIncome">$0</strong>
+            </article>
+            <article class="metric-card">
+              <span>固定支出</span>
+              <strong id="metricFixed">$0</strong>
+            </article>
+            <article class="metric-card">
+              <span>信用卡</span>
+              <strong id="metricCard">$0</strong>
+            </article>
+            <article class="metric-card accent">
+              <span>本月結餘</span>
+              <strong id="metricBalance">$0</strong>
+            </article>
+          </div>
+
+          <div class="overview-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h3>需要注意</h3>
+                <span id="attentionCount" class="badge">0</span>
+              </div>
+              <div id="attentionList" class="attention-list"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <h3>資產概況</h3>
+                <span id="assetTotal" class="badge strong">$0</span>
+              </div>
+              <div id="assetBars" class="bar-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="fixed" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Fixed Expenses</p>
+              <h2>固定支出</h2>
+            </div>
+            <span id="fixedGrandTotal" class="badge strong">$0</span>
+          </div>
+          <div class="split-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h3>必要支出</h3>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span id="fixedEssentialTotal" class="badge">$0</span>
+                  <button id="addEssentialBtn" class="small-button" type="button">新增</button>
+                </div>
+              </div>
+              <div id="essentialList" class="fixed-list"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <h3>訂閱費</h3>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span id="fixedSubTotal" class="badge">$0</span>
+                  <button id="addSubBtn" class="small-button" type="button">新增</button>
+                </div>
+              </div>
+              <div id="subList" class="fixed-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="income" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Income</p>
+              <h2>每月收入</h2>
+            </div>
+            <button id="addIncomeBtn" class="primary-button" type="button">新增收入</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>類型</th>
+                  <th>專案</th>
+                  <th>日期</th>
+                  <th>總額</th>
+                  <th>稅率</th>
+                  <th>實收</th>
+                  <th>狀態</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="incomeRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="cashflow" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Cash Flow</p>
+              <h2>月現金流</h2>
+            </div>
+            <button id="addMonthBtn" class="primary-button" type="button">新增月份</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>月份</th>
+                  <th>收入</th>
+                  <th>常態支出</th>
+                  <th>信用卡</th>
+                  <th>額外支出</th>
+                  <th>結餘</th>
+                </tr>
+              </thead>
+              <tbody id="cashflowRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="spending" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Spending</p>
+              <h2>預算池與大額支出</h2>
+            </div>
+            <button id="addExpenseBtn" class="primary-button" type="button">新增支出</button>
+          </div>
+          <div class="split-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h3>年度預算池</h3>
+                <div style="display:flex;gap:6px;align-items:center">
+                  <button id="applyBudgetBtn" class="small-button secondary" type="button">套用建議配額</button>
+                  <button id="addPoolBtn" class="small-button" type="button">新增</button>
+                </div>
+              </div>
+              <div id="poolList" class="pool-list"></div>
+              <div id="poolCapSummary" class="pool-cap-summary"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <h3>本月大額支出</h3>
+                <span id="expenseTotal" class="badge strong">$0</span>
+              </div>
+              <div id="expenseRows" class="compact-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="assets" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Assets</p>
+              <h2>資產部位</h2>
+            </div>
+            <button id="addAssetBtn" class="primary-button" type="button">新增資產</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>帳戶 / 部位</th>
+                  <th>類型</th>
+                  <th>金額</th>
+                </tr>
+              </thead>
+              <tbody id="assetRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="mortgage" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Mortgage</p>
+              <h2>房貸壓力</h2>
+            </div>
+          </div>
+          <div class="mortgage-grid">
+            <label class="field">
+              房貸月付
+              <input id="mortgagePayment" type="number" min="0" step="500" />
+            </label>
+            <label class="field">
+              租金抵扣
+              <input id="rentOffset" type="number" min="0" step="500" />
+            </label>
+            <label class="field">
+              家人分攤
+              <input id="familyShare" type="number" min="0" step="500" />
+            </label>
+            <article class="metric-card accent">
+              <span>我的月負擔</span>
+              <strong id="mortgageBurden">$0</strong>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="numberInputTemplate">
+      <input class="table-input number" type="number" min="0" step="500" />
+    </template>
+
+    <div id="saveToast" class="save-toast" aria-live="polite">已儲存 ✓</div>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
